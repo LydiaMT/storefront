@@ -48,6 +48,10 @@ const Products = props => {
                         {product.description}
                         </Typography>
                       </CardContent>
+                      <CardContent>
+                        <p>In Stock: {product.total}</p>
+                        <p>Price: ${product.price} </p>
+                      </CardContent>
                     </CardActionArea>
                     <CardActions>
                       <Button onClick={() => props.increment(product.item)} size="small" color="primary">
