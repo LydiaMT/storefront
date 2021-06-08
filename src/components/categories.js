@@ -14,7 +14,7 @@ const Categories = props => {
   
   const classes = useStyles();
 
-  const setActive = (e) => {
+  const setActive = (e) => { 
     e.preventDefault()
     props.setActiveCategory(e.currentTarget.value)
   }
@@ -23,7 +23,7 @@ const Categories = props => {
       <div className={classes.root}>
         <ul>
           {props.categories.map(category => (
-            <li key={category.name}>
+            <li className="nav-li" key={category.name}>
               <Button value={category.name} onClick={setActive} color="primary">
                 {category.name}
               </Button>

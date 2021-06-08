@@ -1,8 +1,43 @@
-main {
-  margin: auto 0;
-  width: 80%
+body {
+  position: relative;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 li { 
   margin: 10px;
+  display: inline;
+}
+
+main {
+  /* position: absolute; */
+  margin: auto 0;
+  width: 80%;
+  margin-bottom: 75px; 
+  height: 100vh;
+
+}
+
+.products{
+  margin: 0 auto;
+  justify-content: center;
+  position: absolute;
+  height: 100vh;
+}
+
+footer {
+  background-color:rgb(231, 231, 231);
+  color: rgb(78, 78, 78);
+  height: 75px;
+  /* position: absolute; */
+  /* bottom: 0; */
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.sub-header{
+  padding: 20px 0 0 10px;
+  font-size: 20px;
 }

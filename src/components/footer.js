@@ -2,9 +2,10 @@ import React from 'react';
 
 function Footer() {
   return(
-    <>
-      <h1>Cool Footer</h1>
-    </>
+    <footer>
+      <p>© 2021 Javascript 401</p>
+      <p>React + Redux + Material UI</p>
+    </footer>
   )
 }
 

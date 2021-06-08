@@ -16,7 +16,9 @@ function Header(props) {
           </Box>
         </Box>
       </div>
-      <Icon fontSize="large">Browse our Categories</Icon>
+      <div className="sub-header">
+        <Icon fontSize="inherit" className="sub-header">Browse our Categories</Icon>
+      </div>
     </>
   )
 }
