@@ -8,28 +8,64 @@ A virtual storefront application built with React, Redux, and Material UI.
 - [Link to Deployed site]()
 - [PR | Day 1]()
 
-# Day 1
+### Phase 1: Application Setup
+- Basic React Application
+- Redux State Management
+- State managed in memory
+- Material UI Components & Styling
+### Phase 2: Shopping Cart
+- Add items to a shopping cart
+- Update quantities
+- Remove items from the cart
+- Show the cart in real-time on the UI
+### Phase 3: Live Data
+- Connect the application a live API
+- Persist changes to products based on cart activity.
+### Phase 4: Checkout & Detail Pages
+- Refactor the store to use the latest Redux design pattern (Redux Toolkit)
+- Add a cart checkout page
+- Add a product details page
 
-## User Stories 
+### Dependencies 
 
-- As a user, I expect to see a list of available product categories in the store so that I can easily browse products
-- As a user, I want to choose a category and see a list of all available products matching that category
-- As a user, I want a clean, easy to use user interface so that I can shop the online store with confidence
+- react
+- react-dom
+- react-redux
+- react-scripts
+- redux
+- redux-devtools-extension
 
-## Technical Requirments
+### Architecture
 
-- Create a visually appealing site using Material UI
-- Use a Redux Store to manage the state of categories and items in the store
-- Display a list of categories from state
-- When the user selects (clicks on) a category …
-  - Identify that category as selected (change of class/display)
-  - Show a list of products associated with the category
+```git
+├── .gitignore
+├── .eslintrc.json
+├── __tests__
+│   ├── app.test.js
+│   ├── cart.test.js
+├── src
+│   ├── index.js
+│   ├── app.js
+│   ├── store
+│   │   ├── index.js
+│   │   ├── categories.js
+│   │   ├── products.js
+│   │   ├── cart.js
+│   ├── components
+│   │   ├── storefront
+│   │   │   └── categories.js
+│   │   │   └── current-category.js
+│   │   │   └── products.js
+│   │   │   └── storefront.js
+│   │   ├── products
+│   │   │   └── details.js
+│   │   ├── cart
+│   │   │   └── simplecart.js
+│   │   │   └── checkout.js
+│   │   ├── header
+│   │   │   └── header.js
+│   │   ├── footer
+│   │   │   └── footer.js
+└── package.json
+```
 
-## Wireframe
-
-Components
-- App
-- Header
-- Footer
-- Categories
-- Products
