@@ -1,21 +1,35 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom'
 import Products from './components/products'
+import { connect } from 'react-redux';
+import { increment, decrement, reset } from './store/products.js';
+
 
 import Header from './components/header';
 // import Categories from './components/categories';
 import Footer from './components/footer';
 
-function App() {
+function App(props) {
   return(
     <>
-      <BrowserRouter>
-        <Header />
-        <Products />
-        <Footer />
-      </BrowserRouter>
+      <Header />
+      <Products 
+        products={props.counter.products} 
+        increment={props.increment} 
+        decrement={props.decrement}
+        activeCategory={props.activeCategory}
+        />
+      <Footer />
     </>
   )
 }
 
-export default App;
+const mapStateToProps = state => ({
+  counter: state.counter,
+  activeCategory: state.categories.activeCategory
+})
+
+const mapDispatchToProps = { increment, decrement, reset }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// export default App;

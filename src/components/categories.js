@@ -1,21 +1,18 @@
 import React from 'react';
 
-import { initialState } from '../store/categories.js';
-
 const Categories = props => {
 
-  // const categories = initialState.products.reduce((accumulator, currentVal) => {
-  //   if(!accumulator.includes(currentVal.category)){
-  //     accumulator.push(currentVal.category)
-  //   }
-  //   return accumulator
-  // }, [])
+  const setActive = (e) => {
+    e.preventDefault()
+    props.setActiveCategory(e.target.value)
+  }
+
   return (
       <section>
         <ul>
-          {initialState.categories.map(category => (
-            <li key={category}>
-              <p>{category.name}</p>
+          {props.categories.map(category => (
+            <li key={category.name}>
+              <button value={category.name} onClick={setActive}>{category.name}</button>
             </li>
           ))}
         </ul>
