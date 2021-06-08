@@ -30,6 +30,7 @@ const Products = props => {
           if(product.category !== props.activeCategory){
             return
             }
+          if(product.inStock > 0){ // hides out of stock products
             return(
               <li key={product.item}>
                 <Grid item lg={12}>
@@ -49,7 +50,7 @@ const Products = props => {
                         </Typography>
                       </CardContent>
                       <CardContent>
-                        <p>In Stock: {product.total}</p>
+                        <p>In Stock: {product.inStock}</p>
                         <p>Price: ${product.price} </p>
                       </CardContent>
                     </CardActionArea>
@@ -64,7 +65,8 @@ const Products = props => {
                   </Card>
                 </Grid>
               </li>
-            )
+              )
+            }
           }
         )}
         </Grid>
