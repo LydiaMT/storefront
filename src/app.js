@@ -3,7 +3,6 @@ import Products from './components/products'
 import { connect } from 'react-redux';
 import { increment, decrement, reset } from './store/products.js';
 
-
 import Header from './components/header';
 // import Categories from './components/categories';
 import Footer from './components/footer';
@@ -31,5 +30,3 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { increment, decrement, reset }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// export default App;
