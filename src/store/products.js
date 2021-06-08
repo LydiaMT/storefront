@@ -1,6 +1,7 @@
-let initialState = {
+export const initialState = {
   products: [
     { item: 'computer', category: 'Electronics', total: 0 },
+    { item: 'gameboy', category: 'Electronics', total: 0 },
     { item: 'pizza', category: 'Food', total: 0 },
     { item: 'monopoly', category: 'Toys', total: 0 }
   ],
