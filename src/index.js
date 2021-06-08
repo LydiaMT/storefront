@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 
 import App from './app.js';
 import store from './store/index.js';
+import './styles/reset.css'
+import './styles/base.css'
 
 function Entry() {
   return (
