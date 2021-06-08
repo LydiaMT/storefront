@@ -38,7 +38,7 @@ export default (state = initialState, action) => { // ACTION are evaluated in th
       let totalItems = state.totalItems + 1;
       let products = state.products.map(product => {
         if(product.item === payload){
-          return { item: product.item, total: product.total + 1}
+          return { ...product, total: product.total + 1}
         }
         return product;
       });
@@ -48,7 +48,7 @@ export default (state = initialState, action) => { // ACTION are evaluated in th
       let totalItems = state.totalItems - 1;
       let products = state.products.map(product => {
         if(product.item === payload){
-          return { item: product.item, total: product.total - 1}
+          return { ...product, total: product.total - 1}
         }
         return product;
       });

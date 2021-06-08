@@ -1,0 +1,1 @@
+// This will be an object or array that holds the titles of the items in the cart
