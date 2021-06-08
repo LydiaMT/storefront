@@ -11,8 +11,8 @@ const Products = props => {
             return(
               <li key={product.item}>
                 <p>{product.item} : {product.total}</p>
-                <button onClick={() => props.increment(product.item)}>+</button>
-                <button onClick={() => props.decrement(product.item)}>-</button>
+                <button onClick={() => props.increment(product.item)}>ADD TO CART</button>
+                <button onClick={() => props.decrement(product.item)}>REMOVE FROM CART</button>
               </li>
             )
           }
