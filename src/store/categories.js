@@ -2,7 +2,6 @@ export const initialState = {
   categories: [
     { name: 'Electronics', description: 'Electronics description'},
     { name: 'Food', description: 'Food description' },
-    { name: 'Toys', description: 'Toys description' },
   ],
   activeCategory: ''
 };
