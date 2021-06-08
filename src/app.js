@@ -9,7 +9,6 @@ import Footer from './components/footer';
 import { increment, decrement, reset } from './store/products.js';
 import categories, { setActiveCategory } from './store/categories';
 
-
 function App(props) {
   return(
     <>
@@ -19,13 +18,15 @@ function App(props) {
         categories={props.categories} 
         setActiveCategory={props.setActiveCategory}
         activeCategory={props.activeCategory}
-        />
-      <Products 
-        products={props.counter.products} 
-        increment={props.increment} 
-        decrement={props.decrement}
-        activeCategory={props.activeCategory}
-        />
+      />
+        <div className="products">
+          <Products 
+            products={props.counter.products} 
+            increment={props.increment} 
+            decrement={props.decrement}
+            activeCategory={props.activeCategory}
+          />
+        </div>
       </main>
       <Footer />
     </>

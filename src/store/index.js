@@ -1,13 +1,13 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-
+import { createStore, combineReducers } from 'redux'; // creates state and combines your reducers
+import { composeWithDevTools } from 'redux-devtools-extension'; // this is needed to utilize the chrom dev tools
+// VVV Bring in your reducers VVV
 import categories from './categories'
 import counter from './products.js';
 
 let reducers = combineReducers({ categories, counter });
 
-const store = () => {
+const store = () => { // STORE - This is how you combine your reducers
   return createStore(reducers, composeWithDevTools());
 }
 
-export default store();
+export default store(); // Calls store. This is our object tree
