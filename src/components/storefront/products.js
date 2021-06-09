@@ -18,61 +18,61 @@ const useStyles = makeStyles({
 const Products = props => {
 
   const classes = useStyles();
+  
   return (
-
-      <ul>
-        <Grid
-          container spacing={1}
-          className={classes.gridContainer}
-          justify="center"
-          >
-        {props.products.map(product => {
-          if(product.category !== props.activeCategory){
-            return
-            }
-          if(product.inStock > 0){ // hides out of stock products
-            return(
-              <li key={product.item}>
-                <Grid item lg={12}>
-                  <Card className={classes.root}>
-                    <CardActionArea>
-                      <CardMedia
-                        className={classes.media}
-                        image={product.img}
-                        title={product.item}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {product.item.toUpperCase()}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                        {product.description}
-                        </Typography>
-                      </CardContent>
-                      <CardContent>
-                        <p>In Stock: {product.inStock}</p>
-                        <p>Price: ${product.price} </p>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button onClick={() => props.increment(product.item)} size="small" color="primary">
-                        ADD TO CART
-                      </Button>
-                      <Button onClick={() => props.decrement(product.item)} size="small" color="primary">
-                        VIEW DETAILS
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              </li>
-              )
-            }
+    <ul>
+      <Grid
+        container spacing={1}
+        className={classes.gridContainer}
+        justify="center"
+        >
+      {props.products.map(product => {
+        if(product.category !== props.activeCategory){
+          return
           }
-        )}
-        </Grid>
-      </ul>
-
+        if(product.inStock > 0){ // hides out of stock products
+          return(
+            <li key={product.item}>
+              <Grid item lg={12}>
+                <Card className={classes.root}>
+                  <CardActionArea>
+                    <CardMedia
+                      className={classes.media}
+                      image={product.img}
+                      title={product.item}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {product.item.toUpperCase()}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" component="p">
+                      {product.description}
+                      </Typography>
+                    </CardContent>
+                    <CardContent>
+                      <p>In Stock: {product.inStock}</p>
+                      <p>Price: ${product.price} </p>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button onClick={() => props.increment(product.item)} size="small" color="primary">
+                      ADD TO CART
+                    </Button>
+                    <Button onClick={() => props.decrement(product.item)} size="small" color="primary">
+                      VIEW DETAILS
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            </li>
+            )
+          }
+        }
+      )}
+      </Grid>
+    </ul>
   )
+  
 }
 
 export default Products
