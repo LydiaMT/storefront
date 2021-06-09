@@ -28,8 +28,8 @@ console.log("======PROPS=====", props)
             <List component="nav" aria-label="secondary mailbox folders">
               <ListItem button>
                 <ListItemText primary={product.item}/>
-                <p>{product.total}</p>
-                <button onClick={() => props.removeItem(product.item)}>x</button>
+                {/* <p>{product.total}</p>
+                <button onClick={() => props.removeItem(product.item)}>x</button> */}
               </ListItem>
             </List>
           </div>
