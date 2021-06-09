@@ -7,7 +7,7 @@ import SimpleCart from './components/cart/simplecart'
 import Products from './components/storefront/products'
 import Footer from './components/footer/footer';
 
-import { increment, decrement, reset } from './store/products.js';
+import { addItem, removeItem } from './store/cart.js'
 import categories, { setActiveCategory } from './store/categories';
 
 function App(props) {
@@ -20,13 +20,14 @@ function App(props) {
           setActiveCategory={props.setActiveCategory}
           activeCategory={props.activeCategory}
         />
-        <SimpleCart />
+        <SimpleCart
+          removeItem={props.removeItem}
+        />
         <div className="products">
           <Products 
             products={props.counter.products} 
-            increment={props.increment} 
-            decrement={props.decrement}
             activeCategory={props.activeCategory}
+            addItem={props.addItem}
           />
         </div>
       </main>
@@ -39,8 +40,9 @@ const mapStateToProps = state => ({
   counter: state.counter,
   activeCategory: state.categories.activeCategory,
   categories: state.categories.categories,
+  cart: state.cart.cart
 })
 
-const mapDispatchToProps = { increment, decrement, reset, setActiveCategory }
+const mapDispatchToProps = { removeItem, setActiveCategory, addItem }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

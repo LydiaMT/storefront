@@ -16,8 +16,7 @@ export const initialState = {
     { item: 'dumblings', category: 'Food', description: 'this is a dumplings', total: 0, inStock: 5, price: 99, img:'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' },
     { item: 'bread', category: 'Food', description: 'this is a bread', total: 0, inStock: 5, price: 99, img:'https://images.unsplash.com/photo-1559811814-e2c57b5e69df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80' },
     { item: 'watermelon', category: 'Food', description: 'this is a watermelon', total: 0, inStock: 5, price: 99, img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80' },
-  ],
-  totalItems: 0
+  ]
 };
 
 // ------ WHEN WHOLE FILE IS IMPORTED ------
@@ -26,53 +25,27 @@ export default (state = initialState, action) => { // ACTION are evaluated in th
   let { type, payload } = action;
 
   switch(type) { // REDUCER
-    case 'INCREMENT':{
-      let totalItems = state.totalItems + 1;
+    case 'ADD_ITEM':{
       let products = state.products.map(product => {
-        if(product.item === payload){
+        if(product.item === payload.item){
           return { ...product, total: product.total + 1, inStock: product.inStock - 1}
         }
         return product;
       });
-      return { totalItems, products };
+      return { products };
     }
-    case 'DECREMENT':{
-      let totalItems = state.totalItems - 1;
+
+    case 'REMOVE_ITEM':{
       let products = state.products.map(product => {
-        if(product.item === payload){
-          return { ...product, total: product.total - 1}
+        if(product.item === payload.item){
+          return { ...product, total: product.total - 1, inStock: product.inStock + 1}
         }
         return product;
       });
-      return { totalItems, products };
+      return { products };
     }
-    case 'RESET': {
-      return initialState;
-    }
+
     default:
       return state;
-  }
-}
-
-// ------ TO IMPORT INDIVIDUAL ACTIONS ------
-
-// Action creators. Their job is to return an action
-export const increment = (item) => {
-  return {
-    type: 'INCREMENT',
-    payload: item
-  }
-}
-
-export const decrement = (item) => {
-  return {
-    type: 'DECREMENT',
-    payload: item
-  }
-}
-
-export const reset = () => {
-  return {
-    type: 'RESET',
   }
 }
