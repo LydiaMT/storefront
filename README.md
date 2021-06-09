@@ -7,6 +7,8 @@ A virtual storefront application built with React, Redux, and Material UI.
 
 - [Link to Deployed site](https://storefront-lmt.netlify.app/)
 - [PR | Day 1](https://github.com/LydiaMT/storefront/pull/1)
+- [PR | Day 2](https://github.com/LydiaMT/storefront/pull/9)
+
 
 ### Phase 1: Application Setup
 - Basic React Application
