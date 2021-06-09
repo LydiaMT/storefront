@@ -55,10 +55,10 @@ const Products = props => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button onClick={() => props.increment(product.item)} size="small" color="primary">
+                    <Button onClick={() => props.addItem(product)} size="small" color="primary">
                       ADD TO CART
                     </Button>
-                    <Button onClick={() => props.decrement(product.item)} size="small" color="primary">
+                    <Button size="small" color="primary">
                       VIEW DETAILS
                     </Button>
                   </CardActions>
@@ -72,7 +72,6 @@ const Products = props => {
       </Grid>
     </ul>
   )
-  
 }
 
 export default Products

@@ -11,46 +11,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
 const SimpleCart = props => {
   const classes = useStyles();
 
-  console.log("==========PROPS==========", props)
+console.log("======PROPS=====", props)
 
-  if(props.totalItems === 0) {
+  if(props.totalItems === 0) { // hides if no items in cart
     return null
   }
 
   return (
     <>    
-    
       <section className="simple-cart">
-        <div className={classes.root}>
-          <List component="nav" aria-label="secondary mailbox folders">
-            <ListItem button>
-              <ListItemText primary="thing one" />
-              <button>x</button>
-            </ListItem>
-            <ListItemLink button>
-              <ListItemText primary="thing two" />
-              <button>x</button>
-            </ListItemLink>
-          </List>
-        </div>
+        {props.cart.map(product => 
+          <div key={`cart${product.item}${Math.random()}`} className={classes.root}>
+            <List component="nav" aria-label="secondary mailbox folders">
+              <ListItem button>
+                <ListItemText primary={product.item}/>
+                <p>{product.total}</p>
+                <button onClick={() => props.removeItem(product.item)}>x</button>
+              </ListItem>
+            </List>
+          </div>
+        )}
       </section>
-      
-    
     </>
   )
 
 }
 
 const mapStateToProps = state => ({
-  totalItems: state.counter.totalItems,
-  // products: state.
+  totalItems: state.cart.totalItems,
+  cart: state.cart.cart
 });
 
 export default connect(mapStateToProps)(SimpleCart)

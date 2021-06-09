@@ -24,7 +24,7 @@ function Header(props) {
 }
 
 const mapStateToProps = state => ({
-  totalItems: state.counter.totalItems,
+  totalItems: state.cart.totalItems,
 });
 
 export default connect(mapStateToProps)(Header);

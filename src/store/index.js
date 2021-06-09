@@ -3,8 +3,9 @@ import { composeWithDevTools } from 'redux-devtools-extension'; // this is neede
 // VVV Bring in your reducers VVV
 import categories from './categories'
 import counter from './products.js';
+import cart from './cart';
 
-let reducers = combineReducers({ categories, counter });
+let reducers = combineReducers({ categories, counter, cart });
 
 const store = () => { // STORE - This is how you combine your reducers
   return createStore(reducers, composeWithDevTools());
