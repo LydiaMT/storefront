@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions'
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, Grid }from '@material-ui/core';
 
@@ -17,8 +19,19 @@ const useStyles = makeStyles({
 
 const Products = props => {
 
+  console.log(props)
+
   const classes = useStyles();
   
+  const fetchData = (e) => {
+    e && e.preventDefault();
+    props.get();
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <ul>
       <Grid
@@ -26,7 +39,7 @@ const Products = props => {
         className={classes.gridContainer}
         justify="center"
         >
-      {props.products.map(product => {
+      {props.data.map(product => {
         if(product.category !== props.activeCategory){
           return
           }
@@ -74,4 +87,12 @@ const Products = props => {
   )
 }
 
-export default Products
+const mapDispatchToProps = (dispatch, getState) => ({
+  get: () => dispatch(actions.getRemoteData())
+})
+
+const mapStateToProps = state => ({
+  data: state.data
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products)
