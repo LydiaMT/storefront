@@ -37,7 +37,7 @@ function App(props) {
         />
         <div className="products">
           <Products 
-            products={props.counter.products} 
+            products={props.products.products} 
             activeCategory={props.activeCategory}
             addItem={props.addItem}
           />
@@ -50,7 +50,7 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-  counter: state.counter,
+  products: state.products,
   activeCategory: state.categories.activeCategory,
   categories: state.categories.categories,
   cart: state.cart.cart,

@@ -3,10 +3,10 @@ import { composeWithDevTools } from 'redux-devtools-extension'; // this is neede
 import ReduxThunk from 'redux-thunk'
 // VVV Bring in your reducers VVV
 import categories from './categories'
-import counter from './products.js';
+import products from './products.js';
 import cart from './cart';
 
-let reducers = combineReducers({ categories, counter, cart });
+let reducers = combineReducers({ categories, products, cart });
 
 const store = () => { // STORE - This is how you combine your reducers
   return createStore(reducers, composeWithDevTools(applyMiddleware(ReduxThunk)));
