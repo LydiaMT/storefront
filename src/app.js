@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Header from './components/header/header';
@@ -10,8 +10,19 @@ import Footer from './components/footer/footer';
 
 import { addItem, removeItem } from './store/cart.js'
 import categories, { setActiveCategory } from './store/categories';
+import { getRemoteData } from './store/actions'
 
 function App(props) {
+
+  const fetchData = (e) => {
+    e && e.preventDefault();
+    props.getRemoteData();
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return(
     <>
       <Header />
@@ -38,13 +49,14 @@ function App(props) {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   counter: state.counter,
   activeCategory: state.categories.activeCategory,
   categories: state.categories.categories,
-  cart: state.cart.cart
+  cart: state.cart.cart,
 })
 
-const mapDispatchToProps = { removeItem, setActiveCategory, addItem }
+const mapDispatchToProps = { removeItem, setActiveCategory, addItem , getRemoteData }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

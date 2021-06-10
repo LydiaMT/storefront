@@ -9,6 +9,12 @@ export const getRemoteData = () => dispatch => {
     })
 }
 
+// export const getRemoteData = (data) => async dispatch => {
+//   let response = await superagent.get(api).send(data);
+//   console.log("=====API BODY=====", response.body)
+// }
+
+
 export const getAction = data => {
   return {
     type: 'GET',

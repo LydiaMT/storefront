@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions'
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, Grid }from '@material-ui/core';
+
 
 const useStyles = makeStyles({
   root: {
@@ -19,18 +19,9 @@ const useStyles = makeStyles({
 
 const Products = props => {
 
-  console.log(props)
+  console.log("=====THIS IS PROPS=====", props)
 
   const classes = useStyles();
-  
-  const fetchData = (e) => {
-    e && e.preventDefault();
-    props.get();
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <ul>
@@ -87,12 +78,18 @@ const Products = props => {
   )
 }
 
-const mapDispatchToProps = (dispatch, getState) => ({
-  get: () => dispatch(actions.getRemoteData())
+const mapStateToProps = (state) => ({
+  data: state.counter.products
 })
 
-const mapStateToProps = state => ({
-  data: state.data
-})
+// const mapDispatchToProps = { removeItem, setActiveCategory, addItem , getRemoteData }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products)
+
+// const mapDispatchToProps = (dispatch, getState) => ({
+//   get: () => dispatch(actions.getRemoteData())
+// })
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Products)
+export default connect(mapStateToProps)(Products)
+
+// export default Products

@@ -46,8 +46,9 @@ export default (state = initialState, action) => { // ACTION are evaluated in th
       return { products };
     }
     case 'GET':
-      return payload
+      return { products: payload }
     default:
       return state
   }
 }
+

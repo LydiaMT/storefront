@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 const SimpleCart = props => {
   const classes = useStyles();
 
-console.log("======PROPS=====", props)
+// console.log("======PROPS=====", props)
 
   if(props.totalItems === 0) { // hides if no items in cart
     return null
