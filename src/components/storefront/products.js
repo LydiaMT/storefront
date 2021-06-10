@@ -19,10 +19,8 @@ const useStyles = makeStyles({
 });
 
 const Products = props => {
-  console.log("=====THIS IS PROPS=====", props)
-  
+  // console.log("=====THIS IS PROPS=====", props)
   const classes = useStyles();
-
 
   return (
     <ul>
