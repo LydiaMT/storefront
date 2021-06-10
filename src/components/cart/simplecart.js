@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import { incrementRemoteData } from '../../store/actions'
+import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,12 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-//========== THIS WILL NEED UPDATE - WHEN THE CUSTOMER REMOVES AN ITEM IT SHOULD +++ADD/INCREMENT+++ TO THE inStock COUNT ============
 const SimpleCart = props => {
   const classes = useStyles();
-
-// console.log("======PROPS=====", props)
 
   if(props.totalItems === 0) { // hides if no items in cart
     return null
@@ -31,8 +28,12 @@ const SimpleCart = props => {
             <List component="nav" aria-label="secondary mailbox folders">
               <ListItem button>
                 <ListItemText primary={product.item}/>
-                {/* <p>{product.total}</p>
-                <button onClick={() => props.removeItem(product.item)}>x</button> */}
+                <HighlightOffRoundedIcon 
+                  onClick={() => {
+                    props.incrementRemoteData(product);
+                    props.removeItemFromCart(product)
+                  }}
+                />
               </ListItem>
             </List>
           </div>
