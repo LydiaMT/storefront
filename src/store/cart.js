@@ -6,7 +6,7 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   let { type, payload } = action;
-  console.log("=====PAYLOAD=====", payload)
+  // console.log("=====PAYLOAD=====", payload)
   switch(type) {
     case 'ADD_ITEM':{
       let totalItems = state.totalItems + 1;

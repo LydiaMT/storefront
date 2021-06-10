@@ -6,7 +6,7 @@ import categories from './categories'
 import counter from './products.js';
 import cart from './cart';
 
-let reducers = combineReducers({ categories, counter, cart, data: counter });
+let reducers = combineReducers({ categories, counter, cart });
 
 const store = () => { // STORE - This is how you combine your reducers
   return createStore(reducers, composeWithDevTools(applyMiddleware(ReduxThunk)));
