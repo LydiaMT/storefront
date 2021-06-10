@@ -5,7 +5,7 @@ import Header from './components/header/header';
 import Categories from './components/storefront/categories'
 import SimpleCart from './components/cart/simplecart'
 import Products from './components/storefront/products'
-import Admin from './components/products/admin';
+// import Admin from './components/products/admin';
 import Footer from './components/footer/footer';
 
 import { addItem, removeItem } from './store/cart.js'
@@ -41,7 +41,7 @@ function App(props) {
             activeCategory={props.activeCategory}
             addItem={props.addItem}
           />
-          <Admin />
+          {/* <Admin /> */}
         </div>
       </main>
       <Footer />
