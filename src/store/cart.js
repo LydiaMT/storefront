@@ -8,12 +8,12 @@ export default (state = initialState, action) => {
   let { type, payload } = action;
 
   switch(type) {
-    case 'ADD_ITEM':{
+    case 'ADD_ITEM_TO_CART':{
       let totalItems = state.totalItems + 1;
       let cart = [ ...state.cart, payload ]
       return { totalItems, cart };
     }
-    case 'REMOVE_ITEM':{
+    case 'REMOVE_ITEM-_FROM_CART':{
       let totalItems = state.totalItems - 1;
       let cart = [ ...state.cart, payload ]
       return { totalItems, cart };
@@ -23,16 +23,16 @@ export default (state = initialState, action) => {
   }
 }
 
-export const addItem = (item) => {
+export const addItemToCart = (item) => {
   return {
-    type: 'ADD_ITEM',
+    type: 'ADD_ITEM_TO_CART',
     payload: item
   }
 }
 
-export const removeItem = (item) => {
+export const removeItemFromCart = (item) => {
   return {
-    type: 'REMOVE_ITEM',
+    type: 'REMOVE_ITEM_FROM_CART',
     payload: item
   }
 }

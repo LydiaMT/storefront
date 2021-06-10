@@ -11,34 +11,34 @@ export const getRemoteData = () => dispatch => {
 }
 
 // updates the inStock count by subtracting 1
-export const addRemoteData = (data) => async (dispatch) => {
+export const decrementRemoteData = (data) => async (dispatch) => {
   let res = await superagent.put(`${api}/${data._id}`).send(data);
-  dispatch(addAction(res.body));
+  dispatch(decrementInstock(res.body));
 };
 
 // updates the inStock count by adding 1
-export const removeRemoteData = (data) => async (dispatch) => {
+export const incrementRemoteData = (data) => async (dispatch) => {
   let res = await superagent.put(`${api}/${data._id}`).send(data);
-  dispatch(removeAction(res.body));
+  dispatch(incrementInstock(res.body));
 };
 
 export const getAction = data => {
   return {
-    type: 'GET_ITEMS',
+    type: 'GET_PRODUCTS',
     payload: data
   }
 }
 
-export const addAction = data => {
+export const decrementInstock = data => {
   return {
-    type: 'ADD_ITEM',
+    type: 'DECREMENT_INSTOCK',
     payload: data
   }
 }
 
-export const removeAction = data => {
+export const incrementInstock = data => {
   return {
-    type: 'REMOVE_ITEM',
+    type: 'INCREMENT_INSTOCK',
     payload: data
   }
 }

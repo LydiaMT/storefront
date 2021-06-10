@@ -1,28 +1,26 @@
 export const initialState = { products: [] };
 
-// ------ WHEN WHOLE FILE IS IMPORTED ------
-// Switch cases => take in prior state
 export default (state = initialState, action) => { // ACTION are evaluated in the switch case
   let { type, payload } = action;
 
   switch(type) { // REDUCER
-    case 'GET_ITEMS':
+    case 'GET_PRODUCTS':
       return { products: payload }
       
-    case 'ADD_ITEM':{
+    case 'DECREMENT_INSTOCK':{
       let products = state.products.map(product => {
         if(product._id === payload._id){
-          return { ...product, total: product.total + 1, inStock: product.inStock - 1}
+          return { ...product, inStock: product.inStock - 1}
         }
         return product;
       });
       return { products };
     }
 
-    case 'REMOVE_ITEM':{
+    case 'INCREMENT_INSTOCK':{
       let products = state.products.map(product => {
         if(product.item === payload.item){
-          return { ...product, total: product.total - 1, inStock: product.inStock + 1}
+          return { ...product, inStock: product.inStock + 1}
         }
         return product;
       });
