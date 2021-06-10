@@ -14,26 +14,10 @@ export default (state = initialState, action) => {
       return { totalItems, cart };
     }
     case 'REMOVE_ITEM_FROM_CART':{
-      console.log("=====PAYLOAD=====", payload)
       let totalItems = state.totalItems - 1;
-      let cart = [ ...state.cart, payload ]
+      let cart = [ ...state.cart ]
       let removeIdx = cart.map(function(product) { return product.item }).indexOf(payload.item)
-      console.log("index to remove", removeIdx)
-      // cart.splice(removeIdx, removeIdx+1)
       cart.splice(removeIdx, 1)
-      
-
-
-      // let updatedCart = cart.filter(products => products.item === payload.item)
-
-      // cart.find(products => {
-      //   if(payload.item === products.item)
-      // })
-      // let idx = state.cart.indexOf(payload)
-      // cart.slice(idx, idx)
-
-      console.log("=====CART=====", cart)
-
       return { totalItems, cart };
     }
     default:
