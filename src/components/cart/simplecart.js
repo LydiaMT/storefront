@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import { removeRemoteData } from '../../store/actions'
+import { incrementRemoteData } from '../../store/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,6 +48,6 @@ const mapStateToProps = state => ({
   cart: state.cart.cart
 });
 
-const mapDispatchToProps = { removeRemoteData }
+const mapDispatchToProps = { incrementRemoteData }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart)

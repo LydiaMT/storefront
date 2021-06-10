@@ -8,7 +8,8 @@ import Products from './components/storefront/products'
 // import Admin from './components/products/admin';
 import Footer from './components/footer/footer';
 
-import { addItem, removeItem } from './store/cart.js'
+import { addItemToCart, removeItemFromCart } from './store/cart.js'
+import { incrementRemoteData, decrementRemoteData } from './store/actions'
 import categories, { setActiveCategory } from './store/categories';
 import { getRemoteData } from './store/actions'
 
@@ -33,13 +34,15 @@ function App(props) {
           activeCategory={props.activeCategory}
         />
         <SimpleCart
-          removeItem={props.removeItem}
+          removeItemFromCart={props.removeItemFromCart}
+          incrementRemoteData={props.incrementRemoteData}
         />
         <div className="products">
           <Products 
             products={props.products.products} 
             activeCategory={props.activeCategory}
-            addItem={props.addItem}
+            decrementRemoteData={props.decrementRemoteData}
+            addItemToCart={props.addItemToCart}
           />
           {/* <Admin /> */}
         </div>
@@ -56,7 +59,7 @@ const mapStateToProps = (state) => ({
   cart: state.cart.cart,
 })
 
-const mapDispatchToProps = { removeItem, setActiveCategory, addItem , getRemoteData }
+const mapDispatchToProps = { removeItemFromCart, setActiveCategory, addItemToCart , getRemoteData }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

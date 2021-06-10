@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, Grid }from '@material-ui/core';
-import { addRemoteData } from '../../store/actions'
+import { decrementRemoteData } from '../../store/actions'
 
 //========== THIS WILL NEED DELETE - WHEN THE CUSTOMER ADDS AN ITEM IT SHOULD +++REDUCE/DECREMENT+++ FROM THE inStock COUNT ============
 const useStyles = makeStyles({
@@ -60,7 +60,13 @@ const Products = props => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button onClick={() => props.addRemoteData(product)} size="small" color="primary">
+                    <Button 
+                      size="small" 
+                      color="primary"
+                      onClick={() => {
+                        props.decrementRemoteData(product);
+                        props.addItemToCart(product)
+                      }}>
                       ADD TO CART
                     </Button>
                     <Button size="small" color="primary">
@@ -83,7 +89,7 @@ const mapStateToProps = (state) => ({
   data: state.products.products
 })
 
-const mapDispatchToProps = { addRemoteData }
+const mapDispatchToProps = { decrementRemoteData }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
