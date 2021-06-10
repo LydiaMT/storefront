@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, Grid }from '@material-ui/core';
+import { addRemoteData } from '../../store/actions'
 
-
+//========== THIS WILL NEED DELETE - WHEN THE CUSTOMER ADDS AN ITEM IT SHOULD +++REDUCE/DECREMENT+++ FROM THE inStock COUNT ============
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -18,10 +19,10 @@ const useStyles = makeStyles({
 });
 
 const Products = props => {
-
   console.log("=====THIS IS PROPS=====", props)
-
+  
   const classes = useStyles();
+
 
   return (
     <ul>
@@ -59,7 +60,7 @@ const Products = props => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button onClick={() => props.addItem(product)} size="small" color="primary">
+                    <Button onClick={() => props.addRemoteData(product)} size="small" color="primary">
                       ADD TO CART
                     </Button>
                     <Button size="small" color="primary">
@@ -79,17 +80,11 @@ const Products = props => {
 }
 
 const mapStateToProps = (state) => ({
-  data: state.counter.products
+  data: state.products.products
 })
 
-// const mapDispatchToProps = { removeItem, setActiveCategory, addItem , getRemoteData }
+const mapDispatchToProps = { addRemoteData }
 
 
-// const mapDispatchToProps = (dispatch, getState) => ({
-//   get: () => dispatch(actions.getRemoteData())
-// })
+export default connect(mapStateToProps, mapDispatchToProps)(Products)
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Products)
-export default connect(mapStateToProps)(Products)
-
-// export default Products

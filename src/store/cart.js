@@ -6,15 +6,11 @@ export const initialState = {
 
 export default (state = initialState, action) => {
   let { type, payload } = action;
-  // console.log("=====PAYLOAD=====", payload)
+
   switch(type) {
     case 'ADD_ITEM':{
       let totalItems = state.totalItems + 1;
       let cart = [ ...state.cart, payload ]
-      // const itemInCart = cart.find(val => val.item === payload.item)
-      // console.log("ITEM IN CART", itemInCart)
-      // let itemInCartIndex = cart.findIndex(itemInCart)
-      // cart[itemInCartIndex].total + 1
       return { totalItems, cart };
     }
     case 'REMOVE_ITEM':{

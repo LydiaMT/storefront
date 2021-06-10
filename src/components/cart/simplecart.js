@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { List, ListItem, ListItemText } from '@material-ui/core';
+import { removeRemoteData } from '../../store/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+//========== THIS WILL NEED UPDATE - WHEN THE CUSTOMER REMOVES AN ITEM IT SHOULD +++ADD/INCREMENT+++ TO THE inStock COUNT ============
 const SimpleCart = props => {
   const classes = useStyles();
 
@@ -45,4 +48,6 @@ const mapStateToProps = state => ({
   cart: state.cart.cart
 });
 
-export default connect(mapStateToProps)(SimpleCart)
+const mapDispatchToProps = { removeRemoteData }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SimpleCart)
