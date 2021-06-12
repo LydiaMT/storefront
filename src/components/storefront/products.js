@@ -8,13 +8,14 @@ import { decrementRemoteData } from '../../store/actions'
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    margin: 30
   },
   media: {
     height: 140,
   },
   gridContainer: {
     paddingLeft: "40px",
-    paddingRight: "40px", 
+    paddingRight: "40px",
   },
 });
 
@@ -22,6 +23,8 @@ const Products = props => {
   const classes = useStyles();
 
   return (
+    <>
+    <Typography className="page-header" variant="h2" gutterBottom>{props.activeCategory.toUpperCase()}</Typography>
     <ul>
       <Grid
         container spacing={1}
@@ -57,7 +60,7 @@ const Products = props => {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button 
+                    <Button
                       size="small" 
                       color="primary"
                       onClick={() => {
@@ -66,13 +69,14 @@ const Products = props => {
                       }}>
                       ADD TO CART
                     </Button>
-                    <Button size="small" color="primary">
-                      <NavLink to={{
+                    <NavLink 
+                      className="navLink" 
+                      to={{
                         pathname:`/details/${product._id}`,
                         state: product
                         }}>
-                        VIEW DETAILS</NavLink>
-                    </Button>
+                      <Button size="small" color="primary">VIEW DETAILS</Button>
+                    </NavLink>
                   </CardActions>
                 </Card>
               </Grid>
@@ -83,6 +87,7 @@ const Products = props => {
       )}
       </Grid>
     </ul>
+    </>
   )
 
 }

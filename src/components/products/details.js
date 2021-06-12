@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card,  CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { Card,  CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 
 import { decrementRemoteData } from '../../store/actions'
 import { addItemToCart } from '../../store/cart'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 600,
+    margin: 'auto',
   },
   media: {
-    height: 140,
+    height: 300,
+    margin: 20
   },
 });
 
@@ -22,37 +24,44 @@ const ProductDetails = props => {
 
   return(
     <>
-    <h1>{singleProduct.item}</h1>
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={singleProduct.img}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            In Stock:{singleProduct.inStock}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="h2">
-            ${singleProduct.price}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-      </CardActions>
-    </Card>
-    <Button 
-      size="medium" 
-      color="primary"
-      onClick={() => {
-        props.decrementRemoteData(singleProduct);
-        props.addItemToCart(singleProduct)
-      }}
-      >
-      Buy
-    </Button>
-    <h1>Product Details</h1>
-    <p>{singleProduct.description}</p>
+      <Typography className="page-header" variant="h2" gutterBottom>{singleProduct.item.toUpperCase()}</Typography>
+      <section>
+        <Card className={classes.root} display="flex" >
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={singleProduct.img}
+            />
+            <CardContent>
+              <div className="details-wrapper">
+                <Typography gutterBottom variant="h5" component="h2">
+                  In Stock: {singleProduct.inStock}
+                </Typography>
+                <Typography gutterBottom variant="h5" component="h2">
+                  ${singleProduct.price}
+                </Typography>
+              </div>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <section className="details-purchase-wrapper">
+          <Button 
+            className="details-buy-btn"
+            display="flex"
+            variant="contained" 
+            color="primary" 
+            disableElevation
+            onClick={() => {
+              props.decrementRemoteData(singleProduct);
+              props.addItemToCart(singleProduct)
+            }}
+            >
+          Buy
+          </Button>
+          <Typography variant="h4" gutterBottom>Product Details</Typography>
+          <Typography variant="body1" gutterBottom>{singleProduct.description}</Typography>
+        </section>
+      </section>
     </>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+import { Icon, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +20,9 @@ const Categories = props => {
 
   return (
       <div className={classes.root}>
+        <div className="sub-header">
+          <Icon fontSize="inherit" className="sub-header">Browse our Categories</Icon>
+        </div>
         <ul>
           {props.categories.map(category => (
             <li className="nav-li" key={category.name}>

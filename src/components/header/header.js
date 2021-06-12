@@ -10,18 +10,15 @@ function Header(props) {
         <Box boxShadow={3} display="flex" p={1} bgcolor="background.paper">
           <Box p={1} flexGrow={1} >
             <Icon fontSize="large">
-              <NavLink to="/">OUR STORE</NavLink>
+              <NavLink className="navLink"  to="/">OUR STORE</NavLink>
             </Icon>
           </Box>
           <Box p={1} >
             <p>
-              <NavLink to="/cart">Cart ({props.totalItems})</NavLink>
+              <NavLink className="navLink"  to="/cart">Cart ({props.totalItems})</NavLink>
             </p>
           </Box>
         </Box>
-      </div>
-      <div className="sub-header">
-        <Icon fontSize="inherit" className="sub-header">Browse our Categories</Icon>
       </div>
     </>
   )
