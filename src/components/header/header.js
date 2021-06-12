@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
-import Box from '@material-ui/core/Box';
+import { Box, Icon } from '@material-ui/core';
 import { connect } from 'react-redux';
-import Icon from '@material-ui/core/Icon';
 
 function Header(props) {
   return(

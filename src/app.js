@@ -9,8 +9,7 @@ import Cart from './components/cart/checkout'
 import ProductDetails from './components/products/details'
 
 import { addItemToCart, removeItemFromCart } from './store/cart.js'
-import { incrementRemoteData, decrementRemoteData } from './store/actions'
-import categories, { setActiveCategory } from './store/categories';
+import { setActiveCategory } from './store/categories';
 import { getRemoteData } from './store/actions'
 
 function App(props) {
@@ -49,22 +48,14 @@ function App(props) {
             />
           </main>
         </Route>
-        {/* <Route exact path={`/details/${props._id}/`}> */}
         <Route 
           exact path={`/details/:${props.products._id}`}
           component={(oneProduct) => <ProductDetails {...oneProduct}/>}
           />
-        {/* //   <ProductDetails
-        //     products={props.products.products} 
-        //     productDetails={props.products.products._id} 
-        //     activeCategory={props.activeCategory}
-        //     decrementRemoteData={props.decrementRemoteData}
-        //     addItemToCart={props.addItemToCart}
-        //   />
-        // </Route> */}
-        <Route>
-          <Cart exact path="/cart"/> 
-        </Route>
+        <Route
+          exact path="/cart"
+          component={(comp) => <Cart {...comp}/>}
+          />
       </Switch>
     </React.StrictMode>
   )
@@ -78,6 +69,5 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = { removeItemFromCart, setActiveCategory, addItemToCart , getRemoteData }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

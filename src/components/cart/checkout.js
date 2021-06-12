@@ -1,23 +1,44 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import { connect } from 'react-redux';
 
 const Cart = props => {
+
+  // -------- calculate total --------
+  const total = (arr) => {
+    let total = 0
+    for(let i = 0; i < arr.length; i++){
+      total = total + arr[i].price
+    }
+    return total
+  }
+  let totalPrice = total(props.cart)
+  
+  // -------- render jsx --------
   return(
     <React.Fragment>
-      {/* <CssBaseline />
-      <Container maxWidth="sm">
-        <h1>Check Out</h1>
-        <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} />
-      </Container> */}
-      {/* <section className="checkout">
-        <div>
-          {props.data.map(cart =>{})}
+      <section className="checkout">
+        <ul>
+          {props.cart.map(cart =>{
+            return(
+              <li key={`${cart.item}${Math.random()}`}>
+                <p>{cart.item}</p>
+                <p>${cart.price}</p>
+              </li>
+            )
+          })}
+        </ul>
+        <div>Total {totalPrice}</div>
+        <div className="credicart">
+          <p>Credit Card stuff will go here</p>
+          <button>BUY NOW</button>
         </div>
-      </section> */}
+      </section>
     </React.Fragment>
   )
 }
 
-export default Cart
+const mapStateToProps = (state) => ({
+  cart: state.cart.cart,
+})
+
+export default connect(mapStateToProps)(Cart);

@@ -12,4 +12,4 @@ const store = () => { // STORE - This is how you combine your reducers
   return createStore(reducers, composeWithDevTools(applyMiddleware(ReduxThunk)));
 }
 
-export default store(); // Calls store. This is our object tree
+export default store();

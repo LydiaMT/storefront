@@ -4,7 +4,6 @@ import App from './app'
 import Footer from './components/footer/footer'
 import { BrowserRouter } from 'react-router-dom'
 
-
 const Main = () => {
     return (
       <React.StrictMode>

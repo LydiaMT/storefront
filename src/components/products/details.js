@@ -1,18 +1,10 @@
-import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import { connect } from 'react-redux';
-
-import { incrementRemoteData } from '../../store/actions'
-// import { productDetails } from '../storefront/products';
-
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Card,  CardActionArea, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+
+import { decrementRemoteData } from '../../store/actions'
+import { addItemToCart } from '../../store/cart'
 
 const useStyles = makeStyles({
   root: {
@@ -24,12 +16,9 @@ const useStyles = makeStyles({
 });
 
 const ProductDetails = props => {
-  console.log("THIS IS THE PROPS FOR 1 PRODUCT", props)
-  // console.log("THIS IS THE PROPS FOR 1 PRODUCT", productDetails)
   const classes = useStyles();
 
   let singleProduct = props.location.state
-  console.log("TEST", singleProduct)
 
   return(
     <>
@@ -42,22 +31,28 @@ const ProductDetails = props => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {props.item}
+            In Stock:{singleProduct.inStock}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {singleProduct.description}
+          <Typography gutterBottom variant="h5" component="h2">
+            ${singleProduct.price}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
       </CardActions>
     </Card>
+    <Button 
+      size="medium" 
+      color="primary"
+      onClick={() => {
+        props.decrementRemoteData(singleProduct);
+        props.addItemToCart(singleProduct)
+      }}
+      >
+      Buy
+    </Button>
+    <h1>Product Details</h1>
+    <p>{singleProduct.description}</p>
     </>
   )
 }
@@ -66,7 +61,6 @@ const mapStateToProps = (state) => ({
   data: state.products.products
 })
 
-const mapDispatchToProps = { incrementRemoteData }
-
+const mapDispatchToProps = { decrementRemoteData, addItemToCart }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails)

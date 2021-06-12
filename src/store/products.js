@@ -31,4 +31,3 @@ export default (state = initialState, action) => { // ACTION are evaluated in th
       return state
   }
 }
-
