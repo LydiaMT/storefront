@@ -58,6 +58,11 @@
   padding: 10px;
 }
 
+.checkout-item{
+  display: flex;
+  align-items: center;
+}
+
 .checkout-btn-wrapper{
   display: flex;
   justify-content: center;
