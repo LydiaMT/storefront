@@ -1,13 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, Button } from '@material-ui/core';
+import { Card, Button, Avatar } from '@material-ui/core';
+import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 
-const useStyles = makeStyles({
+import { removeItemFromCart } from '../../store/cart'
+import { incrementRemoteData } from '../../store/actions'
+
+const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 800,
+    maxWidth: 800
   },
-});
+  bold: {
+    fontWeight: 600
+  },
+  avatar:{
+    marginRight: '10px',
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+  button: {
+    marginLeft: '10px'
+  },
+}));
 
 const Cart = props => {
   const classes = useStyles();
@@ -33,15 +48,27 @@ const Cart = props => {
                   className="checkout-list"
                   key={`${cart.item}${Math.random()}`}
                 >
-                  <p>{cart.item.toUpperCase()}</p>
-                  <p>${cart.price}</p>
+                  <div className="checkout-item">
+                    <Avatar alt={cart.item} src={cart.img} className={classes.avatar}/>
+                    <span>{cart.item.toUpperCase()}</span>
+                  </div>
+                  <div className="checkout-item">
+                    <span>${cart.price}</span>
+                    <HighlightOffRoundedIcon 
+                      className={classes.button}
+                      onClick={() => {
+                        props.incrementRemoteData(cart);
+                        props.removeItemFromCart(cart)
+                      }}
+                    />
+                  </div>
                 </li>
               )
             })}
           </ul>
           <div className="checkout-list">
             <p>Total</p>
-            <p>{totalPrice}</p>
+            <p className={classes.bold}>${totalPrice}</p>
           </div>
           {/* <p>Credit Card stuff will go here</p> */}
           <div className="checkout-btn-wrapper">
@@ -62,7 +89,10 @@ const Cart = props => {
 }
 
 const mapStateToProps = (state) => ({
+  totalItems: state.cart.totalItems,
   cart: state.cart.cart,
 })
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = { incrementRemoteData, removeItemFromCart }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import { List, ListItem, ListItemText, Avatar } from '@material-ui/core';
 import { incrementRemoteData } from '../../store/actions'
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 
@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
+  avatar:{
+    marginRight: '10px'
+  }
 }));
 
 const SimpleCart = props => {
@@ -27,6 +30,7 @@ const SimpleCart = props => {
           <div key={`cart${product.item}${Math.random()}`} className={classes.root}>
             <List component="nav" aria-label="secondary mailbox folders">
               <ListItem button>
+                <Avatar alt={product.item} src={product.img} className={classes.avatar}/>
                 <ListItemText primary={product.item}/>
                 <HighlightOffRoundedIcon 
                   onClick={() => {
