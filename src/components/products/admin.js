@@ -45,3 +45,19 @@ const Admin = props => {
 }
 
 export default Admin
+
+// ----- CSS if this is ever utilized -----
+// .admin-form{
+//   border: 3px solid rgb(89, 91, 229);
+//   width: 30%;
+//   margin: 10px;
+//   padding: 10px;
+// }
+
+// .admin-form > form > div{
+//   padding: 10px;
+// }
+
+// .admin-form > form > h1{
+//   text-align: center;
+// }

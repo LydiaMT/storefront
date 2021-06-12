@@ -1,0 +1,70 @@
+/*----- Title on pages -----*/
+.page-header{
+  text-align: center;
+  padding: 50px;
+}
+
+/*----- Product Grid -----*/
+.products{
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  height: 100vh;
+}
+
+/*----- Running list of items on left of screen -----*/
+.simple-cart{
+  position: fixed;
+  right: 0;
+  top: 80px;
+  width: 200px;
+  border: 3px solid rgb(184, 185, 235);
+  border-right: none;
+  border-radius: 3px 0 0 3px;
+}
+
+/*----- Product Details Page -----*/
+.details-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.details-purchase-wrapper{
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.details-buy-btn {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+/*----- Checkout Page -----*/
+.checkout-wrapper {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 40px;
+  justify-content: center;
+}
+
+.checkout-list{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
+}
+
+.checkout-btn-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.checkout-place-order-btn{
+  width: 50%
+}

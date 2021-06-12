@@ -6,6 +6,7 @@ import Main from './main.js';
 import store from './store/index.js';
 import './styles/reset.css'
 import './styles/base.css'
+import './styles/layout.css'
 
 function Entry() {
   return (
