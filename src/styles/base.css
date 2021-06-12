@@ -6,6 +6,8 @@ body {
   box-sizing: border-box;
   margin: auto 0;
   background-color: rgb(247, 247, 247);
+  display: block;
+  padding-bottom: 100px;
 }
 
 /*----- Header and Nav -----*/
@@ -34,7 +36,8 @@ body {
 /*----- Main -----*/
 main {
   width: 80%;
-  margin-bottom: 75px; 
+  margin-bottom: 75px;
+  padding-bottom: 100px; 
   height: 100vh;
 }
 
@@ -42,8 +45,8 @@ main {
 footer {
   background-color:rgb(231, 231, 231);
   color: rgb(78, 78, 78);
-  height: 75px;
   position: fixed;
+  z-index: -1;
   left: 0;
   bottom: 0;
   width: 100%;
