@@ -9,7 +9,8 @@ A virtual storefront application built with React, Redux, and Material UI.
 - [Link to API](https://lydia-api-server.herokuapp.com/products)
 - [PR | Day 1](https://github.com/LydiaMT/storefront/pull/1)
 - [PR | Day 2](https://github.com/LydiaMT/storefront/pull/9)
-- [PR | Day 3](https://github.com/LydiaMT/storefront/pull/9)
+- [PR | Day 3](https://github.com/LydiaMT/storefront/pull/17)
+- [PR | Day 4](https://github.com/LydiaMT/storefront/pull/18)
 
 
 ### Phase 1: Application Setup
