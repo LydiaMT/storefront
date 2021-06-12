@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
-import App from './app.js';
+import Main from './main.js';
 import store from './store/index.js';
 import './styles/reset.css'
 import './styles/base.css'
@@ -10,7 +10,7 @@ import './styles/base.css'
 function Entry() {
   return (
     <Provider store={store}>
-      <App />
+      <Main />
     </Provider>
   )
 }

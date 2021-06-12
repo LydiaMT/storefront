@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, Grid }from '@material-ui/core';
@@ -34,6 +35,7 @@ const Products = props => {
           return
           }
         if(product.inStock > 0){ // hides out of stock products
+          console.log("What is this????", product._id)
           return(
             <li key={product.item}>
               <Grid item lg={12}>
@@ -68,7 +70,11 @@ const Products = props => {
                       ADD TO CART
                     </Button>
                     <Button size="small" color="primary">
-                      VIEW DETAILS
+                      <NavLink to={{
+                        pathname:`/details/${product._id}`,
+                        state: product
+                        }}>
+                        VIEW DETAILS</NavLink>
                     </Button>
                   </CardActions>
                 </Card>
@@ -81,6 +87,7 @@ const Products = props => {
       </Grid>
     </ul>
   )
+        
 }
 
 const mapStateToProps = (state) => ({
