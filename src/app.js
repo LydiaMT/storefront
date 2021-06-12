@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom'
 
-import Header from './components/header/header';
 import Categories from './components/storefront/categories'
-import SimpleCart from './components/cart/simplecart'
 import Products from './components/storefront/products'
-// import Admin from './components/products/admin';
-import Footer from './components/footer/footer';
+import SimpleCart from './components/cart/simplecart'
+import Cart from './components/cart/checkout'
+import ProductDetails from './components/products/details'
 
 import { addItemToCart, removeItemFromCart } from './store/cart.js'
-import { incrementRemoteData, decrementRemoteData } from './store/actions'
-import categories, { setActiveCategory } from './store/categories';
+import { setActiveCategory } from './store/categories';
 import { getRemoteData } from './store/actions'
 
 function App(props) {
@@ -25,30 +24,40 @@ function App(props) {
   }, []);
 
   return(
-    <>
-      <Header />
-      <main>
-        <Categories 
-          categories={props.categories} 
-          setActiveCategory={props.setActiveCategory}
-          activeCategory={props.activeCategory}
-        />
-        <SimpleCart
-          removeItemFromCart={props.removeItemFromCart}
-          incrementRemoteData={props.incrementRemoteData}
-        />
-        <div className="products">
-          <Products 
-            products={props.products.products} 
-            activeCategory={props.activeCategory}
-            decrementRemoteData={props.decrementRemoteData}
-            addItemToCart={props.addItemToCart}
+    <React.StrictMode>
+      <Switch>
+        <Route exact path='/'>
+          <main>
+            <Categories 
+              categories={props.categories} 
+              setActiveCategory={props.setActiveCategory}
+              activeCategory={props.activeCategory}
+            />
+            <div className="products">
+              <Products 
+                products={props.products.products}
+                productDetails={props.products.products._id} 
+                activeCategory={props.activeCategory}
+                decrementRemoteData={props.decrementRemoteData}
+                addItemToCart={props.addItemToCart}
+              />
+            </div>
+            <SimpleCart
+              removeItemFromCart={props.removeItemFromCart}
+              incrementRemoteData={props.incrementRemoteData}
+            />
+          </main>
+        </Route>
+        <Route 
+          exact path={`/details/:${props.products._id}`}
+          component={(oneProduct) => <ProductDetails {...oneProduct}/>}
           />
-          {/* <Admin /> */}
-        </div>
-      </main>
-      <Footer />
-    </>
+        <Route
+          exact path="/cart"
+          component={(comp) => <Cart {...comp}/>}
+          />
+      </Switch>
+    </React.StrictMode>
   )
 }
 
@@ -60,6 +69,5 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = { removeItemFromCart, setActiveCategory, addItemToCart , getRemoteData }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

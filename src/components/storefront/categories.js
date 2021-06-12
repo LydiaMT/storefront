@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Categories = props => {
-  
   const classes = useStyles();
 
   const setActive = (e) => { 

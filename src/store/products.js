@@ -26,8 +26,8 @@ export default (state = initialState, action) => { // ACTION are evaluated in th
       });
       return { products };
     }
+
     default:
       return state
   }
 }
-

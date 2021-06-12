@@ -41,7 +41,6 @@ const SimpleCart = props => {
       </section>
     </>
   )
-
 }
 
 const mapStateToProps = state => ({

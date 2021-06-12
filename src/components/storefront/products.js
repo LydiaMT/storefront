@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, Grid }from '@material-ui/core';
 import { decrementRemoteData } from '../../store/actions'
 
-//========== THIS WILL NEED DELETE - WHEN THE CUSTOMER ADDS AN ITEM IT SHOULD +++REDUCE/DECREMENT+++ FROM THE inStock COUNT ============
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -19,7 +19,6 @@ const useStyles = makeStyles({
 });
 
 const Products = props => {
-  // console.log("=====THIS IS PROPS=====", props)
   const classes = useStyles();
 
   return (
@@ -68,7 +67,11 @@ const Products = props => {
                       ADD TO CART
                     </Button>
                     <Button size="small" color="primary">
-                      VIEW DETAILS
+                      <NavLink to={{
+                        pathname:`/details/${product._id}`,
+                        state: product
+                        }}>
+                        VIEW DETAILS</NavLink>
                     </Button>
                   </CardActions>
                 </Card>
@@ -81,6 +84,7 @@ const Products = props => {
       </Grid>
     </ul>
   )
+
 }
 
 const mapStateToProps = (state) => ({
@@ -89,6 +93,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = { decrementRemoteData }
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
-
