@@ -30,7 +30,7 @@ const Cart = props => {
   const total = (arr) => {
     let total = 0
     for(let i = 0; i < arr.length; i++){
-      total = total + arr[i].price
+      total += ((arr[i].price * 10) / 10)
     }
     return total
   }
