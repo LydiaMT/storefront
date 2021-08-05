@@ -2,6 +2,7 @@ export const initialState = {
   categories: [
     { name: 'Electronics', description: 'Electronics description'},
     { name: 'Food', description: 'Food description' },
+    // { name: 'All Products', description: 'See all our products'}
   ],
   activeCategory: ''
 };

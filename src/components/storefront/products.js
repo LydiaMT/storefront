@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,58 +32,56 @@ const Products = props => {
         justify="center"
         >
       {props.data.map(product => {
-        if(product.category !== props.activeCategory){
-          return
-          }
-        if(product.inStock > 0){ // hides out of stock products
-          return(
-            <li key={product.item}>
-              <Grid item lg={12}>
-                <Card className={classes.root}>
-                  <CardActionArea>
-                    <CardMedia
-                      className={classes.media}
-                      image={product.img}
-                      title={product.item}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {product.item.toUpperCase()}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                      {product.description}
-                      </Typography>
-                    </CardContent>
-                    <CardContent>
-                      <p>In Stock: {product.inStock}</p>
-                      <p>Price: ${product.price} </p>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button
-                      size="small" 
-                      color="primary"
-                      onClick={() => {
-                        props.decrementRemoteData(product);
-                        props.addItemToCart(product)
-                      }}>
-                      ADD TO CART
-                    </Button>
-                    <NavLink 
-                      className="navLink" 
-                      to={{
-                        pathname:`/details/${product._id}`,
-                        state: product
-                        }}>
-                      <Button size="small" color="primary">VIEW DETAILS</Button>
-                    </NavLink>
-                  </CardActions>
-                </Card>
-              </Grid>
-            </li>
-            )
-          }
-        }
+        console.log('props.activeCategory', props.activeCategory);
+
+        if(product.inStock <= 0) return;
+        if(props.activeCategory !== '' && product.category !== props.activeCategory) return;
+        return(
+          <li key={product.item}>
+          <Grid item lg={12}>
+            <Card className={classes.root}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={product.img}
+                  title={product.item}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {product.item.toUpperCase()}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                  {product.description}
+                  </Typography>
+                </CardContent>
+                <CardContent>
+                  <p>In Stock: {product.inStock}</p>
+                  <p>Price: ${product.price} </p>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button
+                  size="small" 
+                  color="primary"
+                  onClick={() => {
+                    props.decrementRemoteData(product);
+                    props.addItemToCart(product)
+                  }}>
+                  ADD TO CART
+                </Button>
+                <NavLink 
+                  className="navLink" 
+                  to={{
+                    pathname:`/details/${product._id}`,
+                    state: product
+                    }}>
+                  <Button size="small" color="primary">VIEW DETAILS</Button>
+                </NavLink>
+              </CardActions>
+            </Card>
+          </Grid>
+        </li>
+        )}
       )}
       </Grid>
     </ul>

@@ -30,7 +30,10 @@ export const incrementRemoteData = (data) => async (dispatch) => {
   dispatch(incrementInstock(res.body));
 };
 
+
+
 export const getAction = data => {
+  console.log('data', data)
   return {
     type: 'GET_PRODUCTS',
     payload: data
