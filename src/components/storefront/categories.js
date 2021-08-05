@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Icon, Button } from '@material-ui/core';
 
@@ -13,10 +13,16 @@ const useStyles = makeStyles((theme) => ({
 const Categories = props => {
   const classes = useStyles();
 
+  useEffect(() => {
+    props.setActiveCategory('')
+  }, [])
+
   const setActive = (e) => { 
     e.preventDefault()
     props.setActiveCategory(e.currentTarget.value)
   }
+
+  console.log('props.categories', props.categories);
 
   return (
       <div className={classes.root}>

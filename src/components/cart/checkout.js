@@ -70,7 +70,7 @@ const Cart = props => {
             <p>Total</p>
             <p className={classes.bold}>${totalPrice}</p>
           </div>
-          {/* <p>Credit Card stuff will go here</p> */}
+          {/* <p>Credit Card stuff would go here</p> */}
           <div className="checkout-btn-wrapper">
             <Button 
               className="checkout-place-order-btn"
