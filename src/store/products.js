@@ -3,11 +3,8 @@ export const initialState = { products: [] };
 export default (state = initialState, action) => { // ACTION are evaluated in the switch case
   let { type, payload } = action;
 
-  console.log('payload',payload)
-
   switch(type) { // REDUCER
     case 'GET_PRODUCTS':
-      console.log('type', type)
       return { products: payload }
       
     case 'DECREMENT_INSTOCK':{

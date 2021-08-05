@@ -22,8 +22,6 @@ const Categories = props => {
     props.setActiveCategory(e.currentTarget.value)
   }
 
-  console.log('props.categories', props.categories);
-
   return (
       <div className={classes.root}>
         <div className="sub-header">

@@ -32,8 +32,6 @@ const Products = props => {
         justify="center"
         >
       {props.data.map(product => {
-        console.log('props.activeCategory', props.activeCategory);
-
         if(product.inStock <= 0) return;
         if(props.activeCategory !== '' && product.category !== props.activeCategory) return;
         return(
