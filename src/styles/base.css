@@ -39,10 +39,14 @@ main {
   height: 100vh;
 }
 
+/*----- Footer Clear -----*/
 .products > ul{
-  padding-bottom: 100px; 
+  padding-bottom: 100px;
 }
 
+.product-details-wrapper{
+  padding-bottom: 150px;
+}
 
 /*----- Footer -----*/
 footer {

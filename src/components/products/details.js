@@ -25,42 +25,40 @@ const ProductDetails = props => {
   return(
     <>
       <Typography className="page-header" variant="h2" gutterBottom>{singleProduct.item.toUpperCase()}</Typography>
-      <section>
+      <section className="product-details-wrapper">
         <Card className={classes.root} display="flex" >
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={singleProduct.img}
-            />
-            <CardContent>
-              <div className="details-wrapper">
-                <Typography gutterBottom variant="h5" component="h2">
-                  In Stock: {singleProduct.inStock}
-                </Typography>
-                <Typography gutterBottom variant="h5" component="h2">
-                  ${singleProduct.price}
-                </Typography>
-              </div>
-            </CardContent>
-          </CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={singleProduct.img}
+          />
+          <CardContent>
+            <div className="details-wrapper">
+              <Typography gutterBottom variant="h5" component="h2">
+                In Stock: {singleProduct.inStock}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="h2">
+                ${singleProduct.price}
+              </Typography>
+            </div>
+            <section className="details-purchase-wrapper">
+              <Button 
+                className="details-buy-btn"
+                display="flex"
+                variant="contained" 
+                color="primary" 
+                disableElevation
+                onClick={() => {
+                  props.decrementRemoteData(singleProduct);
+                  props.addItemToCart(singleProduct)
+                }}
+                >
+              Buy
+              </Button>
+              <Typography variant="h4" gutterBottom>Product Details</Typography>
+              <Typography variant="body1" gutterBottom>{singleProduct.description}</Typography>
+            </section>
+          </CardContent>
         </Card>
-        <section className="details-purchase-wrapper">
-          <Button 
-            className="details-buy-btn"
-            display="flex"
-            variant="contained" 
-            color="primary" 
-            disableElevation
-            onClick={() => {
-              props.decrementRemoteData(singleProduct);
-              props.addItemToCart(singleProduct)
-            }}
-            >
-          Buy
-          </Button>
-          <Typography variant="h4" gutterBottom>Product Details</Typography>
-          <Typography variant="body1" gutterBottom>{singleProduct.description}</Typography>
-        </section>
       </section>
     </>
   )
