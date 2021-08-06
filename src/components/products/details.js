@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card,  CardActionArea, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
 
 import { decrementRemoteData } from '../../store/actions'
 import { addItemToCart } from '../../store/actions'

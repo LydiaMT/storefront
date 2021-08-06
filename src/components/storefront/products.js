@@ -27,7 +27,7 @@ const Products = props => {
   return (
     <>
     { props.showLoading && <Loader/> }
-    <Typography className="page-header" variant="h2" gutterBottom>{props.activeCategory.toUpperCase()}</Typography>
+    <Typography className="page-header" variant="h2" gutterBottom>{props.activeCategory.toUpperCase() || 'ALL PRODUCTS'}</Typography>
     <ul>
       <Grid
         container spacing={1}

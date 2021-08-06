@@ -26,38 +26,43 @@ const useStyles = makeStyles((theme) => ({
 const Cart = props => {
   const classes = useStyles();
   // -------- calculate total --------
-  const total = (arr) => {
-    let total = 0
-    for(let i = 0; i < arr.length; i++){
-      total = (((total * 100) + (arr[i].price * 100)) / 100)
+  const total = (cart) => {
+    let cartTotal = 0
+    for(let i = 0; i < cart.length; i++){
+      cartTotal = (((cartTotal * 100) + ((cart[i].price * 100) * cart[i].total)) / 100)
     }
-    return total
+    return cartTotal
   }
   let totalPrice = total(props.cart)
   
+  function individualProductPrice(cartItem){
+    return ((cartItem.price * 100) * (cartItem.total * 100)/ 10000)
+  }
+
   // -------- render jsx --------
   return(
     <React.Fragment>
       <section className="checkout-wrapper">
         <Card className={classes.root} display="flex" >
           <ul>
-            {props.cart.map(cart =>{
+            {props.cart.map(item =>{
               return(
                 <li 
                   className="checkout-list"
-                  key={`${cart.item}${Math.random()}`}
+                  key={`${item._id}`}
                 >
                   <div className="checkout-item">
-                    <Avatar alt={cart.item} src={cart.img} className={classes.avatar}/>
-                    <span>{cart.item.toUpperCase()}</span>
+                    <Avatar alt={item.item} src={item.img} className={classes.avatar}/>
+                    <span>{item.item.toUpperCase()}</span>
+                    <span>({item.total})</span>
                   </div>
                   <div className="checkout-item">
-                    <span>${cart.price}</span>
+                    <span>${individualProductPrice(item)}</span>
                     <HighlightOffRoundedIcon 
                       className={classes.button}
                       onClick={() => {
-                        props.incrementRemoteData(cart);
-                        props.removeItemFromCart(cart)
+                        props.incrementRemoteData(item);
+                        props.removeItemFromCart(item)
                       }}
                     />
                   </div>
