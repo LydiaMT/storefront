@@ -8,9 +8,8 @@ import SimpleCart from './components/cart/simplecart'
 import Cart from './components/cart/checkout'
 import ProductDetails from './components/products/details'
 
-import { addItemToCart, removeItemFromCart } from './store/cart.js'
-import { setActiveCategory } from './store/categories';
-import { getRemoteData } from './store/actions'
+import { addItemToCart, removeItemFromCart } from './store/actions'
+import { getRemoteData, setActiveCategory } from './store/actions'
 
 function App(props) {
 
@@ -66,6 +65,7 @@ const mapStateToProps = (state) => ({
   activeCategory: state.categories.activeCategory,
   categories: state.categories.categories,
   cart: state.cart.cart,
+
 })
 
 const mapDispatchToProps = { removeItemFromCart, setActiveCategory, addItemToCart , getRemoteData }
