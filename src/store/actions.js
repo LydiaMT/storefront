@@ -18,18 +18,16 @@ export const getRemoteData = () => dispatch => {
   dispatch(loadingToggleAction())
   return superagent.get(api)
     .then(res => {
-      console.log(res)
       dispatch(getAction(res.body))
     })
 }
 
 // updates the inStock count by subtracting 1 when customer adds to cart
-export const decrementRemoteData = (data) => (dispatch) => {
-  return superagent.put(`${api}/${data._id}`) // alternative: let res = await superagent.put(`${api}/${data._id}`).send(data);
-    .then(res => { // alternative: remove this line
-      dispatch(decrementInstock(res.body))
-    })
+export const decrementRemoteData = (data) => async (dispatch) => {
+  let res = await superagent.put(`${api}/${data._id}`).send(data);
+  dispatch(decrementInstock(res.body))
 }
+
 
 // updates the inStock count by adding 1 when customer removes from cart
 export const incrementRemoteData = (data) => async (dispatch) => {

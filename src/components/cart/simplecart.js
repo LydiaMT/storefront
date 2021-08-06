@@ -27,11 +27,11 @@ const SimpleCart = props => {
     <>    
       <section className="simple-cart">
         {props.cart.map(product => 
-          <div key={`cart${product.item}${Math.random()}`} className={classes.root}>
+          <div key={`cart${product.item}`} className={classes.root}>
             <List component="nav" aria-label="secondary mailbox folders">
               <ListItem button>
                 <Avatar alt={product.item} src={product.img} className={classes.avatar}/>
-                <ListItemText primary={product.item}/>
+                <ListItemText primary={product.item} secondary={product.total}/>
                 <HighlightOffRoundedIcon 
                   onClick={() => {
                     props.incrementRemoteData(product);
