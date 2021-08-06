@@ -12,6 +12,11 @@
   height: 100vh;
 }
 
+.makeStyles-root-8 {
+  margin: 30px;
+  max-width: 240px;
+}
+
 /*----- Running list of items on left of screen -----*/
 .simple-cart{
   position: fixed;
