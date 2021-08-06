@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography, Grid }from '@material-ui/core';
-import { decrementRemoteData } from '../../store/actions'
+import { decrementRemoteData, loadingToggleAction } from '../../store/actions'
+
+import Loader from './loader'
 
 const useStyles = makeStyles({
   root: {
@@ -24,6 +26,7 @@ const Products = props => {
 
   return (
     <>
+    { props.showLoading && <Loader/> }
     <Typography className="page-header" variant="h2" gutterBottom>{props.activeCategory.toUpperCase()}</Typography>
     <ul>
       <Grid
@@ -89,9 +92,10 @@ const Products = props => {
 }
 
 const mapStateToProps = (state) => ({
-  data: state.products.products
+  data: state.products.products,
+  showLoading: state.products.showLoading
 })
 
-const mapDispatchToProps = { decrementRemoteData }
+const mapDispatchToProps = { decrementRemoteData, loadingToggleAction }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)

@@ -3,37 +3,33 @@ export const initialState = {
   totalItems:0
 }
 
-export default (state = initialState, action) => {
+import {ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_CART} from './actions'
+
+export default (state = initialState, action = {}) => {
   let { type, payload } = action;
 
   switch(type) {
-    case 'ADD_ITEM_TO_CART':{
+    case ADD_ITEM_TO_CART:{
       let totalItems = state.totalItems + 1;
       let cart = [ ...state.cart, payload ]
-      return { totalItems, cart };
+      return { 
+        ...state,
+        totalItems, 
+        cart 
+      };
     }
-    case 'REMOVE_ITEM_FROM_CART':{
+    case REMOVE_ITEM_FROM_CART:{
       let totalItems = state.totalItems - 1;
       let cart = [ ...state.cart ]
       let removeIdx = cart.map(function(product) { return product.item }).indexOf(payload.item)
       cart.splice(removeIdx, 1)
-      return { totalItems, cart };
+      return { 
+        ...state,
+        totalItems, 
+        cart 
+      };
     }
     default:
       return state
-  }
-}
-
-export const addItemToCart = (item) => {
-  return {
-    type: 'ADD_ITEM_TO_CART',
-    payload: item
-  }
-}
-
-export const removeItemFromCart = (item) => {
-  return {
-    type: 'REMOVE_ITEM_FROM_CART',
-    payload: item
   }
 }

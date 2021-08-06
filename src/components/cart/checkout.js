@@ -4,8 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Card, Button, Avatar } from '@material-ui/core';
 import HighlightOffRoundedIcon from '@material-ui/icons/HighlightOffRounded';
 
-import { removeItemFromCart } from '../../store/cart'
-import { incrementRemoteData } from '../../store/actions'
+import { removeItemFromCart, incrementRemoteData } from '../../store/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
