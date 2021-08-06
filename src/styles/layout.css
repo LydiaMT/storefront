@@ -14,7 +14,8 @@
 
 .makeStyles-root-8 {
   margin: 30px;
-  max-width: 240px;
+  width: 240px !important;
+  height: 380px !important;
 }
 
 /*----- Running list of items on left of screen -----*/
