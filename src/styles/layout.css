@@ -18,6 +18,10 @@
   height: 380px !important;
 }
 
+.MuiCardActionArea-root {
+  width: 238px;
+}
+
 /*----- Running list of items on left of screen -----*/
 .simple-cart{
   position: fixed;
