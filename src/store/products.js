@@ -1,6 +1,3 @@
-// TODO
-// Action titles should be all imported (only ever use 1 string)
-
 import { GET_PRODUCTS_SUCCESS, DECREMENT_INSTOCK, INCREMENT_INSTOCK, GET_PRODUCTS_PENDING } from './actions'
 
 export const initialState = { 
