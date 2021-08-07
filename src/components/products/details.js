@@ -6,6 +6,8 @@ import { Card, CardContent, CardMedia, Button, Typography } from '@material-ui/c
 import { decrementRemoteData } from '../../store/actions'
 import { addItemToCart } from '../../store/actions'
 
+import Loader from '../storefront/loader'
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 600,
@@ -20,7 +22,31 @@ const useStyles = makeStyles({
 const ProductDetails = props => {
   const classes = useStyles();
 
-  let singleProduct = props.location.state
+  // Saftey net while fetching data
+  if(props.data.length === 0 ) {
+    return(
+      <Loader />
+    )
+  }
+
+  if(!props.location.state){
+    return(
+      <>
+        <Typography className="page-header" variant="h2" gutterBottom>PRODUCT NOT FOUND</Typography>
+      </>
+    )
+  }
+
+  let singleProduct = props.data.find(item => item._id === props.location.state._id);
+
+  if(!singleProduct){
+    return(
+      <>
+        <h1>PRODUCT NOT FOUND</h1>
+      </>
+    )
+  }
+
 
   return(
     <>
@@ -67,6 +93,8 @@ const ProductDetails = props => {
 const mapStateToProps = (state) => ({
   data: state.products.products
 })
+
+
 
 const mapDispatchToProps = { decrementRemoteData, addItemToCart }
 

@@ -24,6 +24,8 @@ const useStyles = makeStyles({
 const Products = props => {
   const classes = useStyles();
 
+  console.log('props', props)
+
   return (
     <>
     { props.showLoading && <Loader/> }
