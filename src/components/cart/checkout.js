@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, Button, Avatar } from '@material-ui/core';
@@ -52,8 +53,21 @@ const Cart = props => {
                   key={`${item._id}`}
                 >
                   <div className="checkout-item">
-                    <Avatar alt={item.item} src={item.img} className={classes.avatar}/>
-                    <span>{item.item.toUpperCase()}</span>
+                    <NavLink
+                      to={{
+                        pathname:`/details/${item._id}`,
+                        state: item
+                        }}>
+                      <Avatar alt={item.item} src={item.img} className={classes.avatar}/>
+                      </NavLink>
+                      <NavLink
+                        className="navLink"
+                        to={{
+                          pathname:`/details/${item._id}`,
+                          state: item
+                          }}>
+                      <span>{item.item.toUpperCase()}</span>
+                    </NavLink>
                     <span>({item.total})</span>
                   </div>
                   <div className="checkout-item">
