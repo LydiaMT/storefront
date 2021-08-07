@@ -1,2 +1,3 @@
-/cart         /
-/details/:id  /
+/home             /
+/cart             https://storefront-lmt.netlify.app/cart
+/details id=:_id  /details/:id
