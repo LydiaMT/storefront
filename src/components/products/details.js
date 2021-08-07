@@ -78,7 +78,7 @@ const ProductDetails = props => {
                   props.addItemToCart(singleProduct)
                 }}
                 >
-              Buy
+              ADD TO CART
               </Button>
               <Typography variant="h4" gutterBottom>Product Details</Typography>
               <Typography variant="body1" gutterBottom>{singleProduct.description}</Typography>
