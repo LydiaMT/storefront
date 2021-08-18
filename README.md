@@ -5,7 +5,7 @@
 
 A virtual ecommerce application built with React, Redux, and Material UI.
 
-- [Link to Deployed site](https://storefront-lmt.netlify.app/)
+- [Link to Deployed site](https://shop-lmt.netlify.app/)
 - [Link to API](https://lydia-api-server.herokuapp.com/products)
 
 ### Phase 1: Application Setup
